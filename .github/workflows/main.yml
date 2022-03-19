@@ -28,7 +28,7 @@ jobs:
     - name: Check out code
       uses: actions/checkout@v1
     - name: Install Python dependencies
-      run: pip install -r requirements.txt --user
+      run: pip install -r requirements.txt
     - name: Lint, format, test and build
       run: |
         make lint
