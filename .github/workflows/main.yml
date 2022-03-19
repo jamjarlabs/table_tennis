@@ -28,12 +28,12 @@ jobs:
     - name: Check out code
       uses: actions/checkout@v1
     - name: Install Python dependencies
-      run: pip install -r requirements.txt
+      run: pip install -r requirements.txt --user
     - name: Lint, format, test and build
       run: |
         make lint
         make check_format
-        make build
+        make
     - name: Deploy binary
       if: github.event_name == 'release' && github.repository == 'jamjarlabs/table_tennis'
       uses: Shopify/upload-to-release@1.0.0
