@@ -23,7 +23,7 @@ jobs:
         wget -O export_templates.zip "https://github.com/godotengine/godot/releases/download/${GODOT_VERSION}-stable/Godot_v${GODOT_VERSION}-stable_export_templates.tpz"
         sudo mkdir -p "${HOME}/.local/share/godot/templates/${GODOT_VERSION}.stable"
         unzip export_templates.zip
-        mv ./templates/* "${HOME}/.local/share/godot/templates/${GODOT_VERSION}.stable/"
+        sudo mv ./templates/* "${HOME}/.local/share/godot/templates/${GODOT_VERSION}.stable/"
         rm -rf ./godot/ ./templates/ godot.zip export_templates.zip
     - name: Check out code
       uses: actions/checkout@v1
