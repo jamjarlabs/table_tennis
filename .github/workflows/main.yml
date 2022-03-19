@@ -1,0 +1,43 @@
+name: build
+on:
+  push:
+  pull_request:
+  release:
+    types: [created]
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-20.04
+    steps:
+    - uses: actions/setup-python@v2
+      with:
+        python-version: '3.10.2'
+    - name: Setup Godot
+      env:
+        GODOT_VERSION: '3.4.3'
+      run: |
+        wget -O godot.zip "https://github.com/godotengine/godot/releases/download/${GODOT_VERSION}-stable/Godot_v${GODOT_VERSION}-stable_linux_headless.64.zip"
+        unzip -d godot "godot.zip"
+        mv "godot/Godot_v${GODOT_VERSION}-stable_linux_headless.64" /usr/local/bin/godot
+        chmod +x /usr/local/bin/godot
+        wget -O export_templates.zip "https://github.com/godotengine/godot/releases/download/${GODOT_VERSION}-stable/Godot_v${GODOT_VERSION}-stable_export_templates.tpz"
+        mkdir -p "/root/.local/share/godot/templates/${GODOT_VERSION}.stable"
+        unzip export_templates.zip
+        mv ./templates/* "/root/.local/share/godot/templates/${GODOT_VERSION}.stable/"
+        rm -rf ./godot/ ./templates/ godot.zip export_templates.zip
+    - name: Check out code
+      uses: actions/checkout@v1
+    - name: Install Python dependencies
+      run: pip install -r requirements.txt
+    - name: Lint, format, test and build
+      run: |
+        make lint
+        make check_format
+        make build
+    - name: Deploy binary
+      if: github.event_name == 'release' && github.repository == 'jamjarlabs/table_tennis'
+      uses: Shopify/upload-to-release@1.0.0
+      with:
+        name: table_tennis.zip
+        path: dist/table_tennis.zip
+        repo-token: ${{ secrets.GITHUB_TOKEN }}

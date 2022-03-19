@@ -1,0 +1,66 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://assets/RobotoSlab-Medium.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://ui/HUD.gd" type="Script" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 32
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 20
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 1, 1, 1, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource( 2 )
+
+[node name="Score" type="Label" parent="."]
+anchor_right = 1.0
+margin_bottom = 14.0
+custom_fonts/font = SubResource( 1 )
+text = "0:0"
+align = 1
+
+[node name="LeftControls" type="Label" parent="."]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 63.0
+margin_top = -33.5
+margin_right = 178.0
+margin_bottom = 33.5
+custom_fonts/font = SubResource( 2 )
+text = "W and S
+to move"
+align = 1
+
+[node name="RightControls" type="Label" parent="."]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -206.0
+margin_top = -43.5
+margin_right = -58.0
+margin_bottom = 43.5
+custom_fonts/font = SubResource( 2 )
+text = "Up and Down 
+arrows to 
+move"
+align = 1
+
+[node name="VSeparator" type="VSeparator" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -2.0
+margin_top = -312.0
+margin_right = 2.0
+custom_styles/separator = SubResource( 3 )
