@@ -21,9 +21,9 @@ jobs:
         mv "godot/Godot_v${GODOT_VERSION}-stable_linux_headless.64" /usr/local/bin/godot
         chmod +x /usr/local/bin/godot
         wget -O export_templates.zip "https://github.com/godotengine/godot/releases/download/${GODOT_VERSION}-stable/Godot_v${GODOT_VERSION}-stable_export_templates.tpz"
-        mkdir -p "/root/.local/share/godot/templates/${GODOT_VERSION}.stable"
+        sudo mkdir -p "${HOME}/.local/share/godot/templates/${GODOT_VERSION}.stable"
         unzip export_templates.zip
-        mv ./templates/* "/root/.local/share/godot/templates/${GODOT_VERSION}.stable/"
+        mv ./templates/* "${HOME}/.local/share/godot/templates/${GODOT_VERSION}.stable/"
         rm -rf ./godot/ ./templates/ godot.zip export_templates.zip
     - name: Check out code
       uses: actions/checkout@v1
