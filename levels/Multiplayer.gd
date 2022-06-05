@@ -19,7 +19,8 @@ func _on_score(side):
 			"level_changed", "game_over", ["Left paddle wins!\n Final score: %d:%d" % score]
 		)
 		return
-	elif score[1] >= target_score:
+
+	if score[1] >= target_score:
 		emit_signal(
 			"level_changed", "game_over", ["Right paddle wins!\n Final score: %d:%d" % score]
 		)

@@ -1,1 +1,1 @@
-gdtoolkit==3.*
+gdtoolkit==3.4.*
