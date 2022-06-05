@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://ui/FullscreenButton.gd" type="Script" id=1]
+[ext_resource path="res://assets/images/fullscreen.svg" type="Texture" id=2]
+[ext_resource path="res://assets/images/fullscreen-exit.svg" type="Texture" id=3]
+
+[sub_resource type="Theme" id=1]
+
+[node name="FullscreenButton" type="TextureButton"]
+margin_right = 40.0
+margin_bottom = 40.0
+theme = SubResource( 1 )
+toggle_mode = true
+texture_normal = ExtResource( 2 )
+texture_pressed = ExtResource( 3 )
+expand = true
+script = ExtResource( 1 )
+
+[connection signal="toggled" from="." to="." method="_on_FullscreenButton_toggled"]

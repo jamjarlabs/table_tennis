@@ -21,13 +21,12 @@ right_controls = false
 position = Vector2( 320, 192 )
 
 [node name="Player" parent="." instance=ExtResource( 4 )]
-position = Vector2( 17, 192 )
+position = Vector2( 63, 192 )
 player = "left"
 
 [node name="AI" parent="." instance=ExtResource( 1 )]
-position = Vector2( 624, 192 )
+position = Vector2( 578, 192 )
 target_path = NodePath("../Ball")
 
 [connection signal="score_updated" from="." to="HUD" method="_on_score_updated"]
 [connection signal="score" from="Ball" to="." method="_on_score"]
-[connection signal="score" from="Ball" to="HUD" method="_on_score"]

@@ -1,13 +1,35 @@
 <html>
     <head>
         <title>Table Tennis</title>
+		<style>
+			#game-canvas-wrapper {
+				width: 100%;
+				max-width: 100%;
+				overflow: hidden;
+				flex-grow: 1;
+			}
+
+			body {
+				display: flex;
+    			flex-direction: column;
+    			align-items: center;
+				overflow: hidden;
+				width: 100%;
+				height: 100%;
+    			margin: 0;
+			}
+		</style>
     </head>
     <body>
         <h1>Table Tennis</h1>
-        <canvas id="canvas"/>
+		<div id="game-canvas-wrapper">
+        	<canvas id="game-canvas"/>
+		</div>
         <script>
             window.JamJar = {
-                RootPath: "/"
+                RootPath: "/",
+				CanvasWrapperID: "game-canvas-wrapper",
+				CanvasID: "game-canvas"
             };
         </script>
         <script src="./index.js"></script>

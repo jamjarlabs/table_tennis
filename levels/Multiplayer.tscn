@@ -19,11 +19,11 @@ color = Color( 0, 0, 0, 1 )
 position = Vector2( 320, 192 )
 
 [node name="Left" parent="." instance=ExtResource( 2 )]
-position = Vector2( 32, 192 )
+position = Vector2( 63, 192 )
 player = "left"
 
 [node name="Right" parent="." instance=ExtResource( 2 )]
-position = Vector2( 608, 192 )
+position = Vector2( 576, 192 )
 player = "right"
 
 [connection signal="score_updated" from="." to="HUD" method="_on_score_updated"]

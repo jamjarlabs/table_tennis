@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/RobotoSlab-Medium.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://levels/GameOver.gd" type="Script" id=2]
 [ext_resource path="res://assets/styles/ButtonFont.tres" type="DynamicFont" id=3]
 [ext_resource path="res://assets/styles/ButtonHoverStyle.tres" type="StyleBox" id=4]
 [ext_resource path="res://assets/styles/ButtonStyle.tres" type="StyleBox" id=5]
+[ext_resource path="res://ui/FullscreenButton.tscn" type="PackedScene" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
@@ -55,5 +56,11 @@ custom_styles/hover = ExtResource( 4 )
 custom_styles/pressed = ExtResource( 5 )
 custom_styles/normal = ExtResource( 5 )
 text = "Main Menu"
+
+[node name="FullscreenButton" parent="." instance=ExtResource( 6 )]
+margin_left = 584.0
+margin_top = 304.0
+margin_right = 624.0
+margin_bottom = 344.0
 
 [connection signal="pressed" from="MainMenu" to="." method="_on_MainMenu_pressed"]

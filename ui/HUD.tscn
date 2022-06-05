@@ -1,7 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/RobotoSlab-Medium.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://ui/HUD.gd" type="Script" id=2]
+[ext_resource path="res://ui/FullscreenButton.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/images/arrow-up-bold.svg" type="Texture" id=4]
+[ext_resource path="res://assets/images/arrow-down-bold.svg" type="Texture" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
@@ -29,26 +32,28 @@ text = "0:0"
 align = 1
 
 [node name="LeftControls" type="Label" parent="."]
+visible = false
 anchor_top = 0.5
 anchor_bottom = 0.5
-margin_left = 63.0
-margin_top = -33.5
-margin_right = 178.0
-margin_bottom = 33.5
+margin_left = 136.0
+margin_top = -20.0
+margin_right = 251.0
+margin_bottom = 47.0
 custom_fonts/font = SubResource( 2 )
 text = "W and S
 to move"
 align = 1
 
 [node name="RightControls" type="Label" parent="."]
+visible = false
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-margin_left = -206.0
-margin_top = -43.5
-margin_right = -58.0
-margin_bottom = 43.5
+margin_left = -256.0
+margin_top = -28.0
+margin_right = -108.0
+margin_bottom = 59.0
 custom_fonts/font = SubResource( 2 )
 text = "Up and Down 
 arrows to 
@@ -64,3 +69,44 @@ margin_left = -2.0
 margin_top = -312.0
 margin_right = 2.0
 custom_styles/separator = SubResource( 3 )
+
+[node name="FullscreenButton" parent="." instance=ExtResource( 3 )]
+margin_left = 584.0
+margin_top = 304.0
+margin_right = 632.0
+margin_bottom = 352.0
+
+[node name="LeftTouchControls" type="Node2D" parent="."]
+visible = false
+
+[node name="LeftPaddleUpControl" type="TouchScreenButton" parent="LeftTouchControls"]
+position = Vector2( 0, 96 )
+scale = Vector2( 2.66667, 2.66667 )
+normal = ExtResource( 4 )
+action = "left_paddle_up"
+visibility_mode = 1
+
+[node name="LeftPaddleDownControl" type="TouchScreenButton" parent="LeftTouchControls"]
+position = Vector2( 0, 224 )
+scale = Vector2( 2.66667, 2.66667 )
+normal = ExtResource( 5 )
+action = "left_paddle_down"
+visibility_mode = 1
+
+[node name="RightTouchControls" type="Node2D" parent="."]
+visible = false
+position = Vector2( 576, 0 )
+
+[node name="RightPaddleUpControl" type="TouchScreenButton" parent="RightTouchControls"]
+position = Vector2( 0, 96 )
+scale = Vector2( 2.66667, 2.66667 )
+normal = ExtResource( 4 )
+action = "right_paddle_up"
+visibility_mode = 1
+
+[node name="RightPaddleDownControl" type="TouchScreenButton" parent="RightTouchControls"]
+position = Vector2( 0, 227 )
+scale = Vector2( 2.66667, 2.66667 )
+normal = ExtResource( 5 )
+action = "right_paddle_down"
+visibility_mode = 1

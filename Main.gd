@@ -1,10 +1,41 @@
 extends Node
 
+# Only used in HTML5 mode
+var _on_window_resize_callback_ref = null
+
 onready var current_level = $Menu
 
 
 func _ready():
+	if OS.get_name() == "HTML5":
+		_on_window_resize_callback_ref = JavaScript.create_callback(self, "_on_window_resize")
+		var window = JavaScript.get_interface("window")
+		window.onresize = _on_window_resize_callback_ref
+
+		_web_resize_window()
 	_connect_change_level(current_level)
+
+
+func _on_window_resize(_args):
+	_web_resize_window()
+
+
+func _web_resize_window():
+	if OS.window_fullscreen:
+		return
+	var width = JavaScript.eval(
+		"""
+		var wrapper = document.getElementById(window.JamJar.CanvasWrapperID);
+		wrapper.clientWidth;
+	"""
+	)
+	var height = JavaScript.eval(
+		"""
+		var wrapper = document.getElementById(window.JamJar.CanvasWrapperID);
+		wrapper.clientHeight;
+	"""
+	)
+	OS.set_window_size(Vector2(width, height))
 
 
 func _on_level_changed(level_name, args):
